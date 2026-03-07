@@ -5,7 +5,7 @@ from datetime import datetime
 inventario = []
 total_perdidas = 0
 
-
+#funciones
 # funciones
 def agregar_producto():
     global total_perdidas
