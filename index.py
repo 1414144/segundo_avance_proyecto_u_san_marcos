@@ -37,6 +37,9 @@ def agregar_producto():
 
     inventario.append(producto)
 
+    print("Producto guardado")
+    print()
+
 
 def mostrar_perdidas():
     print("\nTotal de perdidas:", total_perdidas)
