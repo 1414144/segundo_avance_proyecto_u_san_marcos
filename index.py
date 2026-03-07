@@ -40,6 +40,63 @@ def consultar_producto():
         print("\nNo hay productos.")
         print()
         return
+  print("\nLista de productos:")
+
+    contador = 1
+    for producto in inventario:
+        print(contador, "-", producto["nombre"])
+        contador = contador + 1
+
+    numero = int(input("Numero del producto: "))
+
+    if numero > 0 and numero <= len(inventario):
+        producto = inventario[numero - 1]
+
+        print("\nDatos del producto:")
+        print("Nombre:", producto["nombre"])
+        print("Cantidad:", producto["cantidad"])
+        print("Precio:", producto["precio"])
+        print("Fecha:", producto["fecha"].strftime("%d/%m/%Y"))
+        print("Estado:", producto["estado"])
+        print()
+    else:
+        print("Numero incorrecto")
+        print()
+
+
+def borrar_producto():
+    global total_perdidas
+
+    if len(inventario) == 0:
+        print("\nNo hay productos para borrar.")
+        print()
+        return
+
+    print("\nProductos registrados:")
+
+    contador = 1
+    for producto in inventario:
+        print(contador, "-", producto["nombre"])
+        contador = contador + 1
+
+    numero = int(input("Numero del producto a borrar: "))
+
+    if numero > 0 and numero <= len(inventario):
+        producto = inventario[numero - 1]
+
+        if producto["estado"] == "VENCIDO":
+            perdida = producto["cantidad"] * producto["precio"]
+            total_perdidas = total_perdidas - perdida
+
+        inventario.pop(numero - 1)
+
+        print("Producto eliminado.")
+        print()
+    else:
+        print("Numero incorrecto")
+        print()
+
+
 
 def menu():
     opcion = 0
