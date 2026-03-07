@@ -1,10 +1,15 @@
-#librerias
+# librerias
 from datetime import datetime
 
+# variables
+inventario = []
+total_perdidas = 0
 
-#funciones 
+
+# funciones
 def agregar_producto():
     global total_perdidas
+
     print("\n--- Agregar Producto ---")
 
     nombre = input("Nombre: ")
@@ -30,17 +35,21 @@ def agregar_producto():
         "estado": estado
     }
 
+    inventario.append(producto)
+
 
 def mostrar_perdidas():
     print("\nTotal de perdidas:", total_perdidas)
     print()
-# este esta incompleto conpletalo 
+
+
 def consultar_producto():
     if len(inventario) == 0:
         print("\nNo hay productos.")
         print()
         return
-  print("\nLista de productos:")
+
+    print("\nLista de productos:")
 
     contador = 1
     for producto in inventario:
@@ -97,7 +106,6 @@ def borrar_producto():
         print()
 
 
-
 def menu():
     opcion = 0
 
@@ -112,21 +120,18 @@ def menu():
         opcion = int(input("Opcion: "))
 
         if opcion == 1:
-          agregar_producto()
+            agregar_producto()
         elif opcion == 2:
-#            mostrar_perdidas()
+            mostrar_perdidas()
         elif opcion == 3:
             consultar_producto()
-#        elif opcion == 4:
-#            borrar_producto()
-#        elif opcion == 5:
+        elif opcion == 4:
+            borrar_producto()
+        elif opcion == 5:
             print("Saliendo...")
         else:
             print("Opcion invalida")
             print()
-
-
-
 
 
 menu()
